@@ -1,0 +1,11 @@
+{% extends "education/base.html" %}
+{% block content %}
+<h1>Teachers</h1>
+<ul>
+  {% for t in teachers %}
+    <li><a href="{% url 'education:teacher_detail' t.pk %}">{{ t.first_name }} {{ t.last_name }}</a></li>
+  {% empty %}
+    <li>No teachers found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

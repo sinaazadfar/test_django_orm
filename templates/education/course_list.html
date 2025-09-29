@@ -1,0 +1,11 @@
+{% extends "education/base.html" %}
+{% block content %}
+<h1>Courses</h1>
+<ul>
+  {% for c in courses %}
+    <li><a href="{% url 'education:course_detail' c.pk %}">{{ c.code }} – {{ c.title }}</a></li>
+  {% empty %}
+    <li>No courses found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

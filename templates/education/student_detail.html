@@ -1,0 +1,14 @@
+{% extends "education/base.html" %}
+{% block content %}
+<h1>{{ student.first_name }} {{ student.last_name }}</h1>
+<p>Email: {{ student.email }}</p>
+<p><a href="{% url 'education:student_enroll' student.pk %}">Edit course selection</a></p>
+<h3>Courses</h3>
+<ul>
+  {% for c in student.courses.all %}
+    <li><a href="{% url 'education:course_detail' c.pk %}">{{ c.code }} – {{ c.title }}</a></li>
+  {% empty %}
+    <li>No courses selected.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
